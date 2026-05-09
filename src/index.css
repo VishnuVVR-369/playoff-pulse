@@ -1,0 +1,173 @@
+:root {
+  /* Canvas — stadium night */
+  --bg: #07090f;
+  --bg-elev: #0d1320;
+  --bg-card: #10172580;
+  --bg-card-solid: #101725;
+  --bg-frosted: rgba(13, 19, 32, 0.78);
+
+  /* Ink */
+  --ink: #f5f1e8;
+  --ink-soft: #d8d4c8;
+  --ink-muted: #8d96a8;
+  --ink-faint: #525a6c;
+
+  /* Lines */
+  --line: rgba(245, 241, 232, 0.08);
+  --line-strong: rgba(245, 241, 232, 0.16);
+
+  /* Accent — sodium-lamp yellow (the floodlight) */
+  --accent: #ffc857;
+  --accent-deep: #d99e2b;
+  --accent-soft: rgba(255, 200, 87, 0.14);
+
+  /* Verdict states (muted, never aggressive) */
+  --alive: #5fd58a;
+  --alive-soft: rgba(95, 213, 138, 0.16);
+  --hunt: #f5c731;
+  --hunt-soft: rgba(245, 199, 49, 0.16);
+  --brink: #f08f4a;
+  --brink-soft: rgba(240, 143, 74, 0.16);
+  --out: #6c7387;
+  --out-soft: rgba(108, 115, 135, 0.16);
+
+  /* Type */
+  --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Spacing scale (4px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-glow: 0 0 80px rgba(255, 200, 87, 0.05);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+
+  /* Layout */
+  --max-width: 880px;
+
+  color-scheme: dark;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--font-body);
+  font-feature-settings: 'ss01', 'cv11';
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background: var(--bg);
+  /* Floodlight wash — warm sodium glow at the top, fading into stadium dark */
+  background-image:
+    radial-gradient(
+      ellipse 90% 60% at 50% -10%,
+      rgba(255, 200, 87, 0.12) 0%,
+      rgba(255, 200, 87, 0.04) 35%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 90% 0%,
+      rgba(255, 116, 87, 0.06) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 30% at 10% 5%,
+      rgba(120, 180, 255, 0.05) 0%,
+      transparent 60%
+    );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+
+/* Subtle grain — gives the canvas a printed texture so it doesn't feel digital-flat */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+}
+
+button {
+  font-family: inherit;
+  font-feature-settings: inherit;
+}
+
+input,
+select,
+button {
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
