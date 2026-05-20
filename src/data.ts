@@ -61,13 +61,13 @@ export const teams: Team[] = [
     code: 'RR',
     name: 'Rajasthan Royals',
     short: 'Royals',
-    played: 12,
-    won: 6,
+    played: 13,
+    won: 7,
     lost: 6,
     ties: 0,
     noResult: 0,
-    points: 12,
-    nrr: 0.027,
+    points: 14,
+    nrr: 0.083,
     color: '#ea1a85',
     ink: '#fef3f8',
   },
@@ -131,20 +131,19 @@ export const teams: Team[] = [
     code: 'LSG',
     name: 'Lucknow Super Giants',
     short: 'Super Giants',
-    played: 12,
+    played: 13,
     won: 4,
-    lost: 8,
+    lost: 9,
     ties: 0,
     noResult: 0,
     points: 8,
-    nrr: -0.701,
+    nrr: -0.702,
     color: '#00a9e0',
     ink: '#02212c',
   },
 ]
 
 export const fixtures: Fixture[] = [
-  { id: 64, date: 'May 19, 2026', venue: 'Jaipur', home: 'RR', away: 'LSG' },
   { id: 65, date: 'May 20, 2026', venue: 'Kolkata', home: 'KKR', away: 'MI' },
   { id: 66, date: 'May 21, 2026', venue: 'Ahmedabad', home: 'GT', away: 'CSK' },
   { id: 67, date: 'May 22, 2026', venue: 'Hyderabad', home: 'SRH', away: 'RCB' },
@@ -155,20 +154,24 @@ export const fixtures: Fixture[] = [
 
 export const sources = [
   {
-    label: 'Indian Express — points table as of May 19, 2026',
+    label: 'Indian Express — points table as of May 19, 2026, 11:28 PM IST',
     url: 'https://indianexpress.com/section/sports/ipl/points-table/',
   },
   {
-    label: 'IPL.com — completed results through Match 63 and upcoming Match 64',
-    url: 'https://www.ipl.com/matches/indian-premier-league-129908/rajasthan-royals-vs-lucknow-super-giants-96021',
+    label: 'NDTV Sports — points table and fixtures after Match 64',
+    url: 'https://sports.ndtv.com/ipl-2026/points-table',
   },
   {
-    label: 'NDTV Sports — upcoming fixtures cross-check',
-    url: 'https://sports.ndtv.com/cricket/fixtures',
+    label: 'Wisden — Match 64 result cross-check',
+    url: 'https://www.wisden.com/series/ipl-2026/cricket-news/ipl-2026-points-table-after-rr-vs-lsg-latest-standings-and-net-run-rate-after-rajasthan-beat-lucknow',
+  },
+  {
+    label: 'IPL.com — Match 64 scorecard and table',
+    url: 'https://www.ipl.com/matches/indian-premier-league-129908/rajasthan-royals-vs-lucknow-super-giants-96021',
   },
 ]
 
-export const lastUpdated = 'After Match 63, fetched May 19, 2026'
+export const lastUpdated = 'After Match 64, fetched May 20, 2026'
 
 export const teamOrder = new Map(teams.map((team, index) => [team.code, index]))
 export const teamByCode = new Map(teams.map((team) => [team.code, team]))
